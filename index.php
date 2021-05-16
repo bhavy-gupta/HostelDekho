@@ -1,3 +1,6 @@
+<?php
+include "db.php";
+?>
 <!DOCTYPE html>
 <html>
 
@@ -73,7 +76,7 @@
                                 <button type="submit" name="otp" class="btn btn-default">Sign in</button>
                             </div>
                         </div>
-                        
+
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -793,11 +796,10 @@
                         $name = $_POST['name'];
                         $phone = $_POST['phone'];
                         $email = $_POST['email'];
-                        $approval = "Not Allowed";
-                        $sql = "INSERT INTO `contact` (`name`, `phone`, `email`, `remarks`, `time`) VALUES ('$name', '$phone', '$email', 'Pending', current_timestamp());";
+                        $sql = "INSERT INTO `contact` (`name`, `phone`, `email`,`time`) VALUES ('$name', '$phone', '$email', current_timestamp());";
 
 
-                        if (mysqli_query($con, $sql))
+                        if (mysqli_query($conn, $sql))
                             echo "OK";
                     }
                     ?>
