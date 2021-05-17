@@ -31,6 +31,7 @@ include "db.php";
     <link href="//fonts.googleapis.com/css?family=Oswald:300,400,700" rel="stylesheet">
     <link href="//fonts.googleapis.com/css?family=Federo" rel="stylesheet">
     <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+    <script src="js/submit.js"></script>
     <!--
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
@@ -44,39 +45,57 @@ include "db.php";
 
 
     <!-- Modal -->
-    <div class="modal fade" id="login-Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="login-ModalLabel">User Login</h4>
+                    <h4 class="modal-title" id="myModalLabel">User Registration</h4>
                 </div>
                 <div class="modal-body">
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" method="POST">
                         <div class="form-group">
                             <label for="name" class="col-sm-2 control-label">Name</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="name" placeholder="Full Name">
+                                <input type="text" class="form-control" name="name" id="name" placeholder="Full Name">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="email" class="col-sm-2 control-label">Email</label>
                             <div class="col-sm-10">
-                                <input type="email" class="form-control" id="email" placeholder="Email">
+                                <input type="email" class="form-control" name="email" id="email" placeholder="Email">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="phone" class="col-sm-2 control-label">Phone </label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="phone" placeholder="Phone Number">
+                                <input type="text" class="form-control" name="phone" id="phone" placeholder="Phone Number">
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" id="send-otp">
                             <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" name="otp" class="btn btn-default">Sign in</button>
+                            <input type="button" id="submitFormData" onclick="SubmitFormData();" value="Send OTP" />
                             </div>
                         </div>
-
+                        <div id="results">
+	    <!-- All data will display here  -->
+	 </div>
+                      
+                        <div class="form-group" id="otp-div" style="display: none;">
+                            <label for="otp" class="col-sm-2 control-label">OTP </label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="otp" id="otp" placeholder="OTP">
+                            </div>
+                        </div>
+                        <div class="form-group" id="submit-otp"  style="display: none;">
+                            <div class="col-sm-offset-2 col-sm-10">
+                            <input type="button" id="validateOtp" onclick="ValidateOtp();" value="Submit OTP" />
+                            </div>
+                        </div>
+                        <div id="results">
+	    <!-- All data will display here  -->
+	 </div>
+                        
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -535,7 +554,9 @@ include "db.php";
                                     <li>this is my text</li>
                                     <li>this is my text</li>
                                 </ul>
-                                <a href="admin/reservation.php">View Now</a>
+                                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                                    View Now
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -568,9 +589,8 @@ include "db.php";
                                     <li>this is my text</li>
                                     <li>this is my text</li>
                                 </ul>
-                                <a href="admin/reservation.php">View Now</a>
-                                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login-Modal">
-                                    Launch demo modal
+                                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                                    View Now
                                 </button>
                             </div>
                         </div>
@@ -604,7 +624,9 @@ include "db.php";
                                     <li>this is my text</li>
                                     <li>this is my text</li>
                                 </ul>
-                                <a href="admin/reservation.php">View Now</a>
+                                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                                    View Now
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -637,7 +659,9 @@ include "db.php";
                                     <li>this is my text</li>
                                     <li>this is my text</li>
                                 </ul>
-                                <a href="admin/reservation.php">View Now</a>
+                                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                                    View Now
+                                </button>
                             </div>
                         </div>
                     </div>
