@@ -44,12 +44,12 @@ include "db.php";
 
 
     <!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade" id="login-Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">User Login</h4>
+                    <h4 class="modal-title" id="login-ModalLabel">User Login</h4>
                 </div>
                 <div class="modal-body">
                     <form class="form-horizontal">
@@ -569,7 +569,7 @@ include "db.php";
                                     <li>this is my text</li>
                                 </ul>
                                 <a href="admin/reservation.php">View Now</a>
-                                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login-Modal">
                                     Launch demo modal
                                 </button>
                             </div>
