@@ -15,15 +15,21 @@ else
 {
   //  echo "Connection Established";
 }
-//echo $_POST['otp'];
 //  Configuring POST Variables
 if(isset($_POST['otp']))
 {
   $otp = $_POST['otp'];
   $email = $_POST['email'];
-  $sql = "SELECT `otp` FROM `login` WHERE `mail` = '$email' and `otp` = '$otp'";
+  $sql = "SELECT * FROM `login` WHERE `mail` = '$email' and `otp` = '$otp'";
   $result = mysqli_query($conn,$sql);
-  echo "Access Authorized!!!";
+  $row = mysqli_num_rows($result);
+  if($row == 1){
+    echo "Access Authorized!!!";
+  }
+  else{
+    echo "Incorrect OTP";
+  }
+  
   
 }
 else
