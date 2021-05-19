@@ -4,6 +4,7 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 $db = "hosteldekho";
+session_start();
 
 $conn = mysqli_connect($servername, $username, $password, $db);
 
@@ -25,9 +26,15 @@ if(isset($_POST['otp']))
   $row = mysqli_num_rows($result);
   if($row == 1){
     echo "Access Authorized!!!";
+    ?>
+<script type="text/javascript">
+window.location.href = './admin/reservation.php';
+</script>
+<?php
   }
   else{
     echo "Incorrect OTP";
+    session_destroy();
   }
   
   
@@ -83,6 +90,10 @@ else
       echo "Email sent successfully";
     }
     */
+    $_SESSION['name']=$name;
+    $_SESSION['phone']=$phone;
+    $_SESSION['email']=$email;
+
   }
   else 
   {

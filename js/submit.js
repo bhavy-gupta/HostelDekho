@@ -20,12 +20,10 @@ function ValidateOtp() {
     var otp = $("#otp").val();
     console.log(otp);
     console.log(email);
-    $.post("submit.php", { otp: otp, email: email },
-        function(data) {
-            $('#results').html(data);
-            //   $('#myForm')[0].reset();
-        }
-    );
+    $.post("submit.php", { otp: otp, email: email },function(){
+      window.location.href = './admin/reservation.php';
+
+    });
 }
 /*
 function myFunction() {
@@ -37,3 +35,9 @@ function myFunction() {
 	}
   }
   */
+ /*,
+        function() {
+            //$('#results').html(data);
+           // window.location("./admin/reservation.php");
+            //   $('#myForm')[0].reset();
+        }*/

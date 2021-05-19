@@ -555,6 +555,9 @@ include "db.php";
                                     <li>this is my text</li>
                                 </ul>
                                 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                                    <?php
+                                    $_SESSION['hostel'] = "A";
+                                    ?>
                                     View Now
                                 </button>
                             </div>
