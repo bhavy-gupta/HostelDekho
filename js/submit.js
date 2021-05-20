@@ -20,11 +20,21 @@ function ValidateOtp() {
     var otp = $("#otp").val();
     console.log(otp);
     console.log(email);
-    $.post("submit.php", { otp: otp, email: email },function(){
-      window.location.href = './admin/reservation.php';
+    $.post("submit.php", { otp: otp, email: email }, function(data){
+      var check = data;
+      console.log(typeof(check));
+      console.log(check);
+      if(check=="true"){
+        window.location.href = "./admin/reservation.php";
+      }
+      else{
+        console.log("error");
+        document.getElementById("results").innerHTML = "Invalid OTP!!!";
 
+      }
     });
 }
+
 /*
 function myFunction() {
 	var x = document.getElementById("myDIV");

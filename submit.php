@@ -19,21 +19,17 @@ else
 //  Configuring POST Variables
 if(isset($_POST['otp']))
 {
+  
   $otp = $_POST['otp'];
   $email = $_POST['email'];
   $sql = "SELECT * FROM `login` WHERE `mail` = '$email' and `otp` = '$otp'";
   $result = mysqli_query($conn,$sql);
   $row = mysqli_num_rows($result);
   if($row == 1){
-    echo "Access Authorized!!!";
-    ?>
-<script type="text/javascript">
-window.location.href = './admin/reservation.php';
-</script>
-<?php
+    echo "true";
   }
   else{
-    echo "Incorrect OTP";
+    echo "false";
     session_destroy();
   }
   
@@ -100,6 +96,4 @@ else
     echo mysqli_error($conn);
   }
 }
-
-
 ?>
