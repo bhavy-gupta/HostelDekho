@@ -1,9 +1,30 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'PHPMailer-master/src/Exception.php';
+require 'PHPMailer-master/src/PHPMailer.php';
+require 'PHPMailer-master/src/SMTP.php';
+
+$mail = new PHPMailer();
+$mail->IsSMTP();
+
+$mail->SMTPDebug  = 0;
+$mail->SMTPAuth   = TRUE;
+$mail->SMTPSecure = "tls";
+$mail->Port       = 587;
+$mail->Host       = "smtp.gmail.com";
+$mail->Username   = "hosteldekho24x7@gmail.com";
+$mail->Password   = "contact.hostel.dekho";
+
 //  Creating Connection
 $servername = "localhost";
 $username = "root";
 $password = "";
 $db = "hosteldekho";
+
+
+
 session_start();
 
 $conn = mysqli_connect($servername, $username, $password, $db);
@@ -30,7 +51,6 @@ if(isset($_POST['otp']))
   }
   else{
     echo "false";
-    session_destroy();
   }
   
   
@@ -43,37 +63,17 @@ else
   $ot = mt_rand(100000, 999999);
   $sql = "INSERT INTO `login` (`name`, `phone`, `mail`, `otp`, `time`) VALUES ('$name', '$phone', '$email', '$ot', current_timestamp())";
 
-//  Configuring PHP Mailer
-/*
-  use PHPMailer\PHPMailer\PHPMailer;
-  use PHPMailer\PHPMailer\Exception;
-
-  require 'PHPMailer-master/src/Exception.php';
-  require 'PHPMailer-master/src/PHPMailer.php';
-  require 'PHPMailer-master/src/SMTP.php';
-
-  $mail = new PHPMailer();
-  $mail->IsSMTP();
-
-  $mail->SMTPDebug  = 0;
-  $mail->SMTPAuth   = TRUE;
-  $mail->SMTPSecure = "tls";
-  $mail->Port       = 587;
-  $mail->Host       = "smtp.gmail.com";
-  $mail->Username   = "hosteldekho24x7@gmail.com";
-  $mail->Password   = "contact.hostel.dekho";
-*/
 // Sending OTP on Successful Insertion
 
   $result = mysqli_query($conn, $sql);
   if ($result) 
   {
-    /*
+    
     $mail->IsHTML(true);
     $mail->AddAddress("$email", "$name");
     $mail->SetFrom("hosteldekho24x7@gmail.com", "HostelDekho");
     $mail->Subject = "OTP for Booking";
-    $content = "<b>$otp</b>";
+    $content = "<b>$ot</b>";
 
     $mail->MsgHTML($content);
     if (!$mail->Send()) 
@@ -85,8 +85,8 @@ else
     {
       echo "Email sent successfully";
     }
-    */
-    $_SESSION['name']=$name;
+    
+   $_SESSION['name']=$name;
     $_SESSION['phone']=$phone;
     $_SESSION['email']=$email;
 
