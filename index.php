@@ -1,5 +1,6 @@
 <?php
 include "db.php";
+session_start();
 ?>
 <!DOCTYPE html>
 <html>
@@ -45,12 +46,12 @@ include "db.php";
 
 
     <!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">User Registration</h4>
+                    <h4 class="modal-title" id="myModalLabel"></h4>
                 </div>
                 <div class="modal-body">
                     <form class="form-horizontal" method="POST">
@@ -72,30 +73,34 @@ include "db.php";
                                 <input type="text" class="form-control" name="phone" id="phone" placeholder="Phone Number">
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label for="hostel" class="col-sm-2 control-label">Hostel </label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="hostel" id="hostel" placeholder="Hostel" readonly>
+                            </div>
+                        </div>
                         <div class="form-group" id="send-otp">
                             <div class="col-sm-offset-2 col-sm-10">
-                            <input type="button" id="submitFormData" onclick="SubmitFormData();" value="Send OTP" />
+                                <input type="button" id="submitFormData" onclick="SubmitFormData();" value="Send OTP" />
                             </div>
                         </div>
                         <div id="results">
-	    <!-- All data will display here  -->
-	 </div>
-                      
+                            <!-- All data will display here  -->
+                        </div>
+
                         <div class="form-group" id="otp-div" style="display: none;">
                             <label for="otp" class="col-sm-2 control-label">OTP </label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" name="otp" id="otp" placeholder="OTP">
                             </div>
                         </div>
-                        <div class="form-group" id="submit-otp"  style="display: none;">
+                        <div class="form-group" id="submit-otp" style="display: none;">
                             <div class="col-sm-offset-2 col-sm-10">
-                            <input type="button" id="validateOtp" onclick="ValidateOtp();" value="Submit OTP" />
+                                <input type="button" id="validateOtp" onclick="ValidateOtp();" value="Submit OTP" />
                             </div>
                         </div>
-                        <div id="results">
-	    <!-- All data will display here  -->
-	 </div>
-                        
+
+
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -212,7 +217,7 @@ include "db.php";
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4>HostelDekho.com <span>RISE</span></h4>
+                    <h4>HostelDekho.com</h4>
                     <img src="images/1.jpg" alt=" " class="img-responsive">
                     <h5>We know what you love</h5>
                     <p>Providing students unique and enchanting views from their rooms with its exceptional amenities, makes us one of bests in its kind.Try our awesome services and friendly staff while you are here.</p>
@@ -276,14 +281,14 @@ include "db.php";
         <div class="container">
             <div class="ab-w3l-spa">
                 <h3 class="title-w3-agileits title-black-wthree">About Our HostelDekho.com</h3>
-                <p class="about-para-w3ls">Lorem Ipsum is simply dummy text of the printing and typesetting industry.Sed tempus vestibulum lacus blandit faucibus. Nunc imperdiet, diam nec rhoncus ullamcorper, nisl nulla suscipit ligula, at imperdiet urna</p>
+                <p class="about-para-w3ls">This website shows refers you hostels only near GLA University, Mathura. We refer only verified profiles of the owner and photos of the rooms</p>
                 <img src="images/about.jpg" class="img-responsive" alt="Hair Salon">
                 <div class="w3l-slider-img">
                     <img src="images/a1.jpg" class="img-responsive" alt="Hair Salon">
                 </div>
                 <div class="w3ls-info-about">
                     <h4>You'll love all the amenities we offer!</h4>
-                    <p>Lorem ipsum dolor sit amet, ut magna aliqua. </p>
+                    <p>We care for your privacy and comfort. </p>
                 </div>
             </div>
             <div class="clearfix"> </div>
@@ -300,9 +305,9 @@ include "db.php";
                         <div class="advantage-block ">
                             <i class="fa fa-credit-card" aria-hidden="true"></i>
                             <h4>Stay First, Pay After! </h4>
-                            <p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates.</p>
-                            <p><i class="fa fa-check" aria-hidden="true"></i>Decorated room, proper air conditioned</p>
-                            <p><i class="fa fa-check" aria-hidden="true"></i>Private balcony</p>
+                            <p>There is no hurry for the payment the thing is we want your ensurity.</p>
+                            <p><i class="fa fa-check" aria-hidden="true"></i>Visit the rooms first and get satisfied</p>
+                            <p><i class="fa fa-check" aria-hidden="true"></i>Taste the food before adding it your plan.</p>
 
                         </div>
                     </div>
@@ -345,9 +350,9 @@ include "db.php";
                         <div class="col-md-6 team-img-w3-agile">
                         </div>
                         <div class="col-md-6 team-Info-agileits">
-                            <h4>Lucas Jimenez</h4>
-                            <span>Manager</span>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis.Lorem ipsum dolor .</p>
+                            <h4>Bhavy Gupta</h4>
+                            <span>Full-Stack Developer</span>
+                            <p>Bhavy Gupta's role is to manage the website and Databases .</p>
                             <div class="social-bnr-agileits footer-icons-agileinfo">
                                 <ul class="social-icons3">
                                     <li><a href="#" class="fa fa-facebook icon-border facebook"> </a></li>
@@ -363,9 +368,9 @@ include "db.php";
                         <div class="col-md-6 team-img-w3-agile">
                         </div>
                         <div class="col-md-6 team-Info-agileits">
-                            <h4>Sarah Connor</h4>
-                            <span>Receptionist</span>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis.Lorem ipsum dolor .</p>
+                            <h4>Yug Garg</h4>
+                            <span>Head of Sales and Marketing</span>
+                            <p>Yug Garg role is built a network between the website admin and Hostel owners for updates and also the new comersin the GLA University sales and marketing department.</p>
                             <div class="social-bnr-agileits footer-icons-agileinfo">
                                 <ul class="social-icons3">
                                     <li><a href="#" class="fa fa-facebook icon-border facebook"> </a></li>
@@ -381,9 +386,9 @@ include "db.php";
                         <div class="col-md-6 team-img-w3-agile">
                         </div>
                         <div class="col-md-6 team-Info-agileits">
-                            <h4>Ivan Simpson</h4>
-                            <span>Manager</span>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis.Lorem ipsum dolor .</p>
+                            <h4>Vaseem Khan</h4>
+                            <span>Head of Design Team</span>
+                            <p>Vaseem Khan role is to make website design more attractive and simple which helps in saving client's time as well as make understand their needs.</p>
                             <div class="social-bnr-agileits footer-icons-agileinfo">
                                 <ul class="social-icons3">
                                     <li><a href="#" class="fa fa-facebook icon-border facebook"> </a></li>
@@ -399,9 +404,9 @@ include "db.php";
                         <div class="col-md-6 team-img-w3-agile">
                         </div>
                         <div class="col-md-6 team-Info-agileits">
-                            <h4>Marc Gutierrez</h4>
-                            <span>Receptionist</span>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis.Lorem ipsum dolor .</p>
+                            <h4>Raunak Agarwal</h4>
+                            <span>Head of Business Development</span>
+                            <p>Raunak Agarwal role is to expand the network and covering cities and university's students.</p>
                             <div class="social-bnr-agileits footer-icons-agileinfo">
                                 <ul class="social-icons3">
                                     <li><a href="#" class="fa fa-facebook icon-border facebook"> </a></li>
@@ -424,7 +429,7 @@ include "db.php";
         <div class="col-md-3 gallery-grid gallery1">
             <a href="images/g1.jpg" class="swipebox"><img src="images/g1.jpg" class="img-responsive" alt="/">
                 <div class="textbox">
-                    <h4>SUN RISE</h4>
+                    <h4>HostelDekho.com</h4>
                     <p><i class="fa fa-picture-o" aria-hidden="true"></i></p>
                 </div>
             </a>
@@ -432,7 +437,7 @@ include "db.php";
         <div class="col-md-3 gallery-grid gallery1">
             <a href="images/g2.jpg" class="swipebox"><img src="images/g2.jpg" class="img-responsive" alt="/">
                 <div class="textbox">
-                    <h4>SUN RISE</h4>
+                    <h4>HostelDekho.com</h4>
                     <p><i class="fa fa-picture-o" aria-hidden="true"></i></p>
                 </div>
             </a>
@@ -440,7 +445,7 @@ include "db.php";
         <div class="col-md-3 gallery-grid gallery1">
             <a href="images/g3.jpg" class="swipebox"><img src="images/g3.jpg" class="img-responsive" alt="/">
                 <div class="textbox">
-                    <h4>SUN RISE</h4>
+                    <h4>HostelDekho.com</h4>
                     <p><i class="fa fa-picture-o" aria-hidden="true"></i></p>
                 </div>
             </a>
@@ -448,7 +453,7 @@ include "db.php";
         <div class="col-md-3 gallery-grid gallery1">
             <a href="images/g4.jpg" class="swipebox"><img src="images/g4.jpg" class="img-responsive" alt="/">
                 <div class="textbox">
-                    <h4>SUN RISE</h4>
+                    <h4>HostelDekho.com</h4>
                     <p><i class="fa fa-picture-o" aria-hidden="true"></i></p>
                 </div>
             </a>
@@ -456,7 +461,7 @@ include "db.php";
         <div class="col-md-3 gallery-grid gallery1">
             <a href="images/g5.jpg" class="swipebox"><img src="images/g5.jpg" class="img-responsive" alt="/">
                 <div class="textbox">
-                    <h4>SUN RISE</h4>
+                    <h4>HostelDekho.com</h4>
                     <p><i class="fa fa-picture-o" aria-hidden="true"></i></p>
                 </div>
             </a>
@@ -464,7 +469,7 @@ include "db.php";
         <div class="col-md-3 gallery-grid gallery1">
             <a href="images/g6.jpg" class="swipebox"><img src="images/g6.jpg" class="img-responsive" alt="/">
                 <div class="textbox">
-                    <h4>SUN RISE</h4>
+                    <h4>HostelDekho.com</h4>
                     <p><i class="fa fa-picture-o" aria-hidden="true"></i></p>
                 </div>
             </a>
@@ -472,7 +477,7 @@ include "db.php";
         <div class="col-md-3 gallery-grid gallery1">
             <a href="images/g6.jpg" class="swipebox"><img src="images/g7.jpg" class="img-responsive" alt="/">
                 <div class="textbox">
-                    <h4>SUN RISE</h4>
+                    <h4>HostelDekho.com</h4>
                     <p><i class="fa fa-picture-o" aria-hidden="true"></i></p>
                 </div>
             </a>
@@ -480,7 +485,7 @@ include "db.php";
         <div class="col-md-3 gallery-grid gallery1">
             <a href="images/g6.jpg" class="swipebox"><img src="images/g8.jpg" class="img-responsive" alt="/">
                 <div class="textbox">
-                    <h4>SUN RISE</h4>
+                    <h4>HostelDekho.com</h4>
                     <p><i class="fa fa-picture-o" aria-hidden="true"></i></p>
                 </div>
             </a>
@@ -488,7 +493,7 @@ include "db.php";
         <div class="col-md-3 gallery-grid gallery1">
             <a href="images/g9.jpg" class="swipebox"><img src="images/g9.jpg" class="img-responsive" alt="/">
                 <div class="textbox">
-                    <h4>SUN RISE</h4>
+                    <h4>HostelDekho.com</h4>
                     <p><i class="fa fa-picture-o" aria-hidden="true"></i></p>
                 </div>
             </a>
@@ -496,7 +501,7 @@ include "db.php";
         <div class="col-md-3 gallery-grid gallery1">
             <a href="images/g10.jpg" class="swipebox"><img src="images/g10.jpg" class="img-responsive" alt="/">
                 <div class="textbox">
-                    <h4>SUN RISE</h4>
+                    <h4>HostelDekho.com</h4>
                     <p><i class="fa fa-picture-o" aria-hidden="true"></i></p>
                 </div>
             </a>
@@ -504,7 +509,7 @@ include "db.php";
         <div class="col-md-3 gallery-grid gallery1">
             <a href="images/g4.jpg" class="swipebox"><img src="images/g4.jpg" class="img-responsive" alt="/">
                 <div class="textbox">
-                    <h4>SUN RISE</h4>
+                    <h4>HostelDekho.com</h4>
                     <p><i class="fa fa-picture-o" aria-hidden="true"></i></p>
                 </div>
             </a>
@@ -512,7 +517,7 @@ include "db.php";
         <div class="col-md-3 gallery-grid gallery1">
             <a href="images/g2.jpg" class="swipebox"><img src="images/g2.jpg" class="img-responsive" alt="/">
                 <div class="textbox">
-                    <h4>SUN RISE</h4>
+                    <h4>HostelDekho.com</h4>
                     <p><i class="fa fa-picture-o" aria-hidden="true"></i></p>
                 </div>
             </a>
@@ -548,16 +553,14 @@ include "db.php";
                                 <h3>Services Included : </h3>
                                 <br>
                                 <ul>
-                                    <li>this is my text</li>
-                                    <li>this is my text</li>
-                                    <li>this is my text</li>
-                                    <li>this is my text</li>
-                                    <li>this is my text</li>
+                                    <li>Security Camera Available</li>
+                                    <li>Free Laundry Service</li>
+                                    <li>Attached Washroom</li>
+                                    <li>24X7 Electricty</li>
+                                    <li>24X7 Water</li>
                                 </ul>
-                                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-                                    <?php
-                                    $_SESSION['hostel'] = "A";
-                                    ?>
+                                <button type="button" id="subA" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#loginModal">
+
                                     View Now
                                 </button>
                             </div>
@@ -586,13 +589,13 @@ include "db.php";
                                 <h3>Services Included : </h3>
                                 <br>
                                 <ul>
-                                    <li>this is my text</li>
-                                    <li>this is my text</li>
-                                    <li>this is my text</li>
-                                    <li>this is my text</li>
-                                    <li>this is my text</li>
+                                    <li>Security Camera Available</li>
+                                    <li>Free Laundry Service</li>
+                                    <li>Free Wi-Fi  </li>
+                                    <li>24X7 Electricty</li>
+                                    <li>24X7 Water</li>
                                 </ul>
-                                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                                <button type="button" id="subB" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#loginModal">
                                     View Now
                                 </button>
                             </div>
@@ -621,13 +624,13 @@ include "db.php";
                                 <h3>Services Included : </h3>
                                 <br>
                                 <ul>
-                                    <li>this is my text</li>
-                                    <li>this is my text</li>
-                                    <li>this is my text</li>
-                                    <li>this is my text</li>
-                                    <li>this is my text</li>
+                                    <li>Security Camera Available</li>
+                                    <li>Paid Laundry Service</li>
+                                    <li>Well-Maintained Washroom</li>
+                                    <li>24X7 Electricty</li>
+                                    <li>24X7 Water</li>
                                 </ul>
-                                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                                <button type="button" id="subC" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#loginModal">
                                     View Now
                                 </button>
                             </div>
@@ -656,13 +659,13 @@ include "db.php";
                                 <h3>Services Included : </h3>
                                 <br>
                                 <ul>
-                                    <li>this is my text</li>
-                                    <li>this is my text</li>
-                                    <li>this is my text</li>
-                                    <li>this is my text</li>
-                                    <li>this is my text</li>
+                                    <li>Security Camera Available</li>
+                                    <li>Paid Laundry Service</li>
+                                    <li>Well-Maintained Washroom</li>
+                                    <li>24X7 Electricty</li>
+                                    <li>24X7 Water</li>
                                 </ul>
-                                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                                <button type="button" id="subD" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#loginModal">
                                     View Now
                                 </button>
                             </div>
@@ -823,6 +826,13 @@ include "db.php";
                         $name = $_POST['name'];
                         $phone = $_POST['phone'];
                         $email = $_POST['email'];
+                        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                            $emailErr = 0;
+                        }
+
+                        $mobErr = preg_match("/^[1-9][0-9]{10}$/", $phone);
+                        echo $mobErr;
+                        echo $emailErr;
                         $sql = "INSERT INTO `contact` (`name`, `phone`, `email`,`time`) VALUES ('$name', '$phone', '$email', current_timestamp());";
 
 
@@ -834,8 +844,8 @@ include "db.php";
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 contact-w3-agile1" data-aos="flip-right">
                 <h4>Connect With Us</h4>
-                <p class="contact-agile1"><strong>Phone :</strong>+91-9084730909</p>
-                <p class="contact-agile1"><strong>Email :</strong> <a href="mailto:name@example.com">INFO@HOSTELDEKHO.COM</a></p>
+                <p class="contact-agile1"><strong>Phone :</strong>+91-9084908490</p>
+                <p class="contact-agile1"><strong>Email :</strong> <a href="mailto:name@example.com">hosteldekho24x7@gmail.COM</a></p>
                 <p class="contact-agile1"><strong>Address :</strong>GLA UNIVERSITY , MATHURA </p>
 
                 <iframe src="https://maps.google.com/maps?q=GLA%20university&t=&z=15&ie=UTF8&iwloc=&output=embed"></iframe>
@@ -959,6 +969,36 @@ include "db.php";
             $().UItoTop({
                 easingType: 'easeOutQuart'
             });
+        });
+    </script>
+    <script type="text/javascript">
+        $("#subA").click(function() {
+            var hostel = "User Registration for Hostel A";
+            $("#myModalLabel").html(hostel);
+            document.getElementById('hostel').value='A';
+           // $.post("submit.php", { hostel:'A' });
+        });
+    </script>
+    <script type="text/javascript">
+        $("#subB").click(function() {
+            var hostel = "User Registration for Hostel B";
+            $("#myModalLabel").html(hostel);
+            document.getElementById('hostel').value='B';
+        });
+    </script>
+    <script type="text/javascript">
+        $("#subC").click(function() {
+            var hostel = "User Registration for Hostel C";
+            $("#myModalLabel").html(hostel);
+            document.getElementById('hostel').value='C';
+        });
+    </script>
+    <script type="text/javascript">
+        $("#subD").click(function() {
+            var hostel = "User Registration for Hostel D";
+            $("#myModalLabel").html(hostel);
+            document.getElementById('hostel').value='D';
+
         });
     </script>
 

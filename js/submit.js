@@ -3,7 +3,9 @@ function SubmitFormData() {
     var name = $("#name").val();
     var email = $("#email").val();
     var phone = $("#phone").val();
-    $.post("submit.php", { name: name, email: email, phone: phone, }, function(data) {
+    var hostel = document.getElementById("hostel").textContent;
+    console.log(hostel);
+    $.post("submit.php", { name: name, email: email, phone: phone,hostel:hostel }, function(data) {
         $('#results').html(data);
         //   $('#myForm')[0].reset();
     });

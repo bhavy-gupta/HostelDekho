@@ -103,14 +103,14 @@ if(!isset($_SESSION["user"]))
                 <!-- /. ROW  -->
 				<?php
 						include ('db.php');
-						$sql = "select * from roombook";
-						$re = mysqli_query($con,$sql);
+						$sql = "select * from booking";
+						$re = mysqli_query($conn,$sql);
 						$c =0;
 						while($row=mysqli_fetch_array($re) )
 						{
 								$new = $row['stat'];
-								$cin = $row['cin'];
-								$id = $row['id'];
+								$cin = $row['check_in'];
+								$id = $row['sno'];
 								if($new=="Not Conform")
 								{
 									$c = $c + 1;
@@ -171,26 +171,28 @@ if(!isset($_SESSION["user"]))
                                     <tbody>
                                         
 									<?php
-									$tsql = "select * from roombook";
-									$tre = mysqli_query($con,$tsql);
+									$tsql = "select * from booking";
+									$tre = mysqli_query($conn,$tsql);
 									while($trow=mysqli_fetch_array($tre) )
 									{	
 										$co =$trow['stat']; 
-										if($co=="Not Conform")
+										if($co=="Under Waiting")
 										{
 											echo"<tr>
-												<th>".$trow['id']."</th>
-												<th>".$trow['FName']." ".$trow['LName']."</th>
-												<th>".$trow['Email']."</th>
-												<th>".$trow['Country']."</th>
-												<th>".$trow['TRoom']."</th>
-												<th>".$trow['Bed']."</th>
-												<th>".$trow['Meal']."</th>
-												<th>".$trow['cin']."</th>
-												<th>".$trow['cout']."</th>
-												<th>".$trow['stat']."</th>
+												<th>".$trow['sno']."</th>
+												<th>".$trow['name']."</th>
+												<th>".$trow['phone']."</th>
+												<th>".$trow['email']."</th>
+												<th>".$trow['course']."</th>
+												<th>".$trow['hometown']."</th>
+												<th>".$trow['type_room']."</th>
+												<th>".$trow['meal']."</th>
+												<th>".$trow['wifi']."</th>
+												<th>".$trow['laundry']."</th>
+												<th>".$trow['check_in']."</th>
+												<th>".$trow['check_out']."</th>
 												
-												<th><a href='roombook.php?rid=".$trow['id']." ' class='btn btn-primary'>Action</a></th>
+												<th><a href='roombook.php?rid=".$trow['sno']." ' class='btn btn-primary'>Action</a></th>
 												</tr>";
 										}	
 									
@@ -209,8 +211,8 @@ if(!isset($_SESSION["user"]))
                                 </div>
 								<?php
 								
-								$rsql = "SELECT * FROM `roombook`";
-								$rre = mysqli_query($con,$rsql);
+								$rsql = "SELECT * FROM `booking`";
+								$rre = mysqli_query($conn,$rsql);
 								$r =0;
 								while($row=mysqli_fetch_array($rre) )
 								{		

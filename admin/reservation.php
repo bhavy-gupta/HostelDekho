@@ -83,6 +83,13 @@ session_start();
 
                                     </div>
                                     <div class="form-group">
+                                        <label>Hostel</label>
+                                        <input name="hostel" class="form-control" readonly placeholder="<?php
+                                                                                                        echo $_SESSION['hostel'];
+                                                                                                        ?>">
+
+                                    </div>
+                                    <div class="form-group">
                                         <label>Course</label>
                                         <input name="course" type="text" class="form-control" required>
 
@@ -157,12 +164,13 @@ session_start();
 
                                     <div class="form-group">
                                         <label>Check-In</label>
-                                        <input name="cin" id="cin" type="date" class="form-control">
+                                        <input name="cin" id="cin" type="date" class="form-control" required>
 
                                     </div>
+
                                     <div class="form-group">
                                         <label>Check-Out</label>
-                                        <input name="cout" id="cout" type="date" class="form-control">
+                                        <input name="cout" id="cout" type="date" class="form-control" required>
 
                                     </div>
                                 </div>
@@ -187,16 +195,12 @@ session_start();
                                     if ($code1 != "$code") {
                                         $msg = "Invalide code";
                                     } else {
-                                        $cin = $_POST['cin'];
-                                        $newDate = date("Y-m-d", strtotime($cin));
-                                        $cout = $_POST['cout'];
-                                        $newDate = date("Y-m-d", strtotime($cout));
                                         $new = "Under Waiting";
-                                        $newUser = "INSERT INTO `booking`(`name`, `phone`, `email`, `course`, `hometown`, `alt_phone`, `type_room`, `meal`, `wifi`, `laundry`, `check_in`, `check_out`) VALUES ('$_SESSION[name]','$_SESSION[phone]','$_SESSION[email]','$_POST[course]','$_POST[hometown]','$_POST[aphone]','$_POST[troom]','$_POST[meal]','$_POST[wifi]','$_POST[laundry]','$_POST[cin]','$_POST[cout]')";
+                                        $newUser = "INSERT INTO `booking`(`name`, `phone`, `email`, `course`, `hometown`, `alt_phone`, `type_room`, `meal`, `wifi`, `laundry`, `check_in`, `check_out`,`stat`,`nodays`,`hostel`) VALUES ('$_SESSION[name]','$_SESSION[phone]','$_SESSION[email]','$_POST[course]','$_POST[hometown]','$_POST[aphone]','$_POST[troom]','$_POST[meal]','$_POST[wifi]','$_POST[laundry]','$_POST[cin]','$_POST[cout]','$new',datediff('$_POST[cout]','$_POST[cin]'),'$_SESSION[hostel]')";
                                         if (mysqli_query($conn, $newUser)) {
                                             echo "<script type='text/javascript'> alert('Your Booking application has been sent')</script>";
                                         } else {
-                                            // echo mysqli_error($conn);
+                                            echo mysqli_error($conn);
                                             echo "<script type='text/javascript'> alert('Error adding user in database')</script>";
                                         }
                                     }
@@ -236,8 +240,3 @@ session_start();
 </body>
 
 </html>
-<!--
-
-,`stat`,`nodays`
-'$new',datediff('$_POST[cout]','$_POST[cin]')
--->
