@@ -10,7 +10,7 @@ if (!isset($_SESSION["user"])) {
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Administrator </title>
+    <title>ADMIN | HostelDekho.com </title>
     <!-- Bootstrap Styles-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FontAwesome Styles-->
@@ -70,24 +70,15 @@ if (!isset($_SESSION["user"])) {
                     <li>
                         <a href="payment.php"><i class="fa fa-qrcode"></i> Payment</a>
                     </li>
-
                     <li>
                         <a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                     </li>
-
-
-
-
                 </ul>
-
             </div>
-
         </nav>
         <!-- /. NAV SIDE  -->
         <div id="page-wrapper">
             <div id="page-inner">
-
-
                 <div class="row">
                     <div class="col-md-12">
                         <h1 class="page-header">
@@ -109,18 +100,12 @@ if (!isset($_SESSION["user"])) {
                         $c = $c + 1;
                     }
                 }
-
-
-
-
-
                 ?>
 
                 <div class="row">
                     <div class="col-md-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-
                             </div>
                             <div class="panel-body">
                                 <div class="panel-group" id="accordion">
@@ -128,7 +113,7 @@ if (!isset($_SESSION["user"])) {
                                     <div class="panel panel-primary">
                                         <div class="panel-heading">
                                             <h4 class="panel-title">
-                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                                                <a>
                                                     <button class="btn btn-default" type="button">
                                                         New Room Bookings <span class="badge"><?php echo $c; ?></span>
                                                     </button>
@@ -146,20 +131,17 @@ if (!isset($_SESSION["user"])) {
                                                                     <tr>
                                                                         <th>#</th>
                                                                         <th>Name</th>
+                                                                        <th>Phone</th>
                                                                         <th>Email</th>
-                                                                        <th>Country</th>
-                                                                        <th>Room</th>
-                                                                        <th>Bedding</th>
-                                                                        <th>Meal</th>
+                                                                        <th>Hostel</th>
+                                                                        <th>Type of Room</th>
                                                                         <th>Check In</th>
                                                                         <th>Check Out</th>
                                                                         <th>Status</th>
                                                                         <th>More</th>
-
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
-
                                                                     <?php
                                                                     $tsql = "select * from booking";
                                                                     $tre = mysqli_query($conn, $tsql);
@@ -171,24 +153,18 @@ if (!isset($_SESSION["user"])) {
 												<th>" . $trow['name'] . "</th>
 												<th>" . $trow['phone'] . "</th>
 												<th>" . $trow['email'] . "</th>
-												<th>" . $trow['course'] . "</th>
-												<th>" . $trow['hometown'] . "</th>
+												<th>" . $trow['hostel'] . "</th>
 												<th>" . $trow['type_room'] . "</th>
-												<th>" . $trow['meal'] . "</th>
-												<th>" . $trow['wifi'] . "</th>
-												<th>" . $trow['laundry'] . "</th>
 												<th>" . $trow['check_in'] . "</th>
 												<th>" . $trow['check_out'] . "</th>
-												
+												<th>" . $trow['stat'] . "</th>
 												<th><a href='roombook.php?rid=" . $trow['sno'] . " ' class='btn btn-primary'>Action</a></th>
 												</tr>";
                                                                         }
                                                                     }
                                                                     ?>
-
                                                                 </tbody>
                                                             </table>
-
                                                         </div>
                                                     </div>
                                                 </div>
@@ -212,19 +188,19 @@ if (!isset($_SESSION["user"])) {
                                     <div class="panel panel-info">
                                         <div class="panel-heading">
                                             <h4 class="panel-title">
-                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="collapsed">
-                                                    <button class="btn btn-primary" type="button">
-                                                        Booked Rooms <span class="badge"><?php echo $r; ?></span>
-                                                    </button>
 
-                                                </a>
+                                                <button class="btn btn-primary" type="button">
+                                                    Booked Rooms <span class="badge"><?php echo $r; ?></span>
+                                                </button>
+
+
                                             </h4>
                                         </div>
-                                        <div id="collapseOne" class="panel-collapse collapse" style="height: 0px;">
+                                        <div style="height: 0px;">
                                             <div class="panel-body">
                                                 <?php
-                                                $msql = "SELECT * FROM `roombook`";
-                                                $mre = mysqli_query($con, $msql);
+                                                $msql = "SELECT * FROM `booking`";
+                                                $mre = mysqli_query($conn, $msql);
 
                                                 while ($mrow = mysqli_fetch_array($mre)) {
                                                     $br = $mrow['stat'];
@@ -241,18 +217,15 @@ if (!isset($_SESSION["user"])) {
 														<a href=show.php?sid=" . $fid . "><button  class='btn btn-primary btn' data-toggle='modal' data-target='#myModal'>
 													Show
 													</button></a>
-															" . $mrow['TRoom'] . "
+															" . $mrow['type_room'] . "
 														</div>
 													</div>	
 											</div>";
                                                     }
                                                 }
                                                 ?>
-
                                             </div>
-
                                         </div>
-
                                     </div>
                                     <?php
 
@@ -267,14 +240,14 @@ if (!isset($_SESSION["user"])) {
                                     <div class="panel panel-danger">
                                         <div class="panel-heading">
                                             <h4 class="panel-title">
-                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" class="collapsed">
-                                                    <button class="btn btn-primary" type="button">
-                                                        Followers <span class="badge"><?php echo $f; ?></span>
-                                                    </button>
-                                                </a>
+
+                                                <button class="btn btn-primary" type="button">
+                                                    Contact-Us Forum <span class="badge"><?php echo $f; ?></span>
+                                                </button>
+
                                             </h4>
                                         </div>
-                                        <div id="collapseThree" class="panel-collapse collapse">
+                                        <div>
                                             <div class="panel-body">
                                                 <div class="panel-body">
                                                     <div class="table-responsive">
@@ -284,8 +257,8 @@ if (!isset($_SESSION["user"])) {
                                                                     <th>#</th>
                                                                     <th>Full Name</th>
                                                                     <th>Email</th>
-                                                                    <th>Follow Start</th>
-                                                                    <th>Permission status</th>
+                                                                    <th>Phone</th>
+                                                                    <th>Remarks</th>
 
 
                                                                 </tr>
@@ -298,18 +271,20 @@ if (!isset($_SESSION["user"])) {
                                                                 while ($crow = mysqli_fetch_array($cre)) {
 
                                                                     echo "<tr>
-												<th>" . $crow['id'] . "</th>
-												<th>" . $crow['fullname'] . "</th>
+												<th>" . $crow['sno'] . "</th>
+												<th>" . $crow['name'] . "</th>
 												<th>" . $crow['email'] . " </th>
-												<th>" . $crow['cdate'] . " </th>
-												<th>" . $crow['approval'] . "</th>
+												<th>" . $crow['phone'] . " </th>
+												<th>" . $crow['remarks'] . "</th>
 												</tr>";
                                                                 }
                                                                 ?>
 
                                                             </tbody>
                                                         </table>
+                                                        <!--
                                                         <a href="messages.php" class="btn btn-primary">More Action</a>
+                                                        -->
                                                     </div>
                                                 </div>
                                             </div>
@@ -323,7 +298,7 @@ if (!isset($_SESSION["user"])) {
             </div>
 
 
-            <!-- DEOMO-->
+            <!-- DEOMO -->
             <div class='panel-body'>
                 <button class='btn btn-primary btn' data-toggle='modal' data-target='#myModal'>
                     Update
@@ -339,13 +314,13 @@ if (!isset($_SESSION["user"])) {
                                         <div class=' modal-body'>
                                 <div class='form-group'>
                                     <label>Change User name</label>
-                                    <input name='usname' value='<?php echo $fname; ?>' class='form-control' placeholder='Enter User name'>
+                                    <input name='usname' value='<?php echo $name; ?>' class='form-control' placeholder='Enter User name'>
                                 </div>
                         </div>
                         <div class='modal-body'>
                             <div class='form-group'>
                                 <label>Change Password</label>
-                                <input name='pasd' value='<?php echo $ps; ?>' class='form-control' placeholder='Enter Password'>
+                                <input name='pasd' value='<?php echo $pass; ?>' class='form-control' placeholder='Enter Password'>
                             </div>
                         </div>
 

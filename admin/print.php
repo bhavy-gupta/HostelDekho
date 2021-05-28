@@ -170,31 +170,27 @@ tr:hover .cut { opacity: 1; }
 	
 	
 	
-	$sql ="select * from payment where id = '$pid' ";
-	$re = mysqli_query($con,$sql);
+	$sql ="select * from payment where sno = '$pid' ";
+	$re = mysqli_query($conn,$sql);
 	while($row=mysqli_fetch_array($re))
 	{
-		$id = $row['id'];
-		$title = $row['title'];
-		$fname = $row['fname'];
-		$lname = $row['lname'];
+		$id = $row['sno'];
+		$name = $row['name'];
+		$hostel = $row['hostel'];
 		$troom = $row['troom'];
-		$bed = $row['tbed'];
-		$nroom = $row['nroom'];
+		$roomno = $row['room_no'];
 		$cin = $row['cin'];
 		$cout = $row['cout'];
-		$meal = $row['meal'];
-		$ttot = $row['ttot'];
-		$mepr = $row['mepr'];
-		$btot = $row['btot'];
-		$fintot = $row['fintot'];
 		$days = $row['noofdays'];
+		$rcharge = $row['roomcharge'];
+		$meal = $row['mealcharge'];
+		$wifi = $row['wificharge'];
+		$laun = $row['launcharge'];
+		$total = $row['total'];
 		
-		
-		
-	
+
 	}
-	
+	/*
 									$type_of_room = 0;       
 									if($troom=="Superior Room")
 									{
@@ -250,21 +246,21 @@ tr:hover .cut { opacity: 1; }
 									{
 										$type_of_meal=$type_of_bed * 4;
 									}
-	
+	*/
 	?>
 		<header>
 			<h1>Invoice</h1>
 			<address >
-				<p>SUN RISE HOTEL,</p>
-				<p>New Kalmunani Road,<br>Battialoa,<br>Sri Lanka.</p>
-				<p>(+94) 65 222 44 55</p>
+				<p>HostelDekho.com</p>
+				<p>GLA University, <br>Mathura<br></p>
+				<p>+91-9084908490</p>
 			</address>
-			<span><img alt="" src="assets/img/sun.png"></span>
+			<span><img alt="" src="assets/img/logo.png"></span>
 		</header>
 		<article>
 			<h1>Recipient</h1>
 			<address >
-				<p><?php echo $title.$fname." ".$lname ?> <br></p>
+				<p><?php echo $name ?> <br></p>
 			</address>
 			<table class="meta">
 				<tr>
@@ -282,8 +278,6 @@ tr:hover .cut { opacity: 1; }
 					<tr>
 						<th><span >Item</span></th>
 						<th><span >No of Days</span></th>
-						<th><span >Rate</span></th>
-						<th><span >Quantity</span></th>
 						<th><span >Price</span></th>
 					</tr>
 				</thead>
@@ -291,23 +285,23 @@ tr:hover .cut { opacity: 1; }
 					<tr>
 						<td><span ><?php echo $troom; ?></span></td>
 						<td><span ><?php echo $days; ?> </span></td>
-						<td><span data-prefix>$</span><span ><?php  echo $type_of_room;?></span></td>
-						<td><span ><?php echo $nroom;?> </span></td>
-						<td><span data-prefix>$</span><span><?php echo $ttot; ?></span></td>
+						<td><span data-prefix>$</span><span><?php echo $rcharge; ?></span></td>
 					</tr>
 					<tr>
-						<td><span ><?php echo $bed; ?>  Bed </span></td>
+						<td><span >Meal Service </span></td>
 						<td><span ><?php echo $days; ?></span></td>
-						<td><span data-prefix>$</span><span ><?php  echo $type_of_bed;?></span></td>
-						<td><span ><?php echo $nroom;?> </span></td>
-						<td><span data-prefix>$</span><span><?php echo $btot; ?></span></td>
+						
+						<td><span data-prefix>$</span><span><?php echo $meal; ?></span></td>
 					</tr>
 					<tr>
-						<td><span ><?php echo $meal; ?>  </span></td>
+						<td><span >Wi-Fi Service  </span></td>
 						<td><span ><?php echo $days; ?></span></td>
-						<td><span data-prefix>$</span><span ><?php  echo $type_of_meal?></span></td>
-						<td><span ><?php echo $nroom;?> </span></td>
-						<td><span data-prefix>$</span><span><?php echo $mepr; ?></span></td>
+						<td><span data-prefix>$</span><span><?php echo $wifi; ?></span></td>
+					</tr>
+					<tr>
+						<td><span >Laundry Service  </span></td>
+						<td><span ><?php echo $days; ?></span></td>
+						<td><span data-prefix>$</span><span><?php echo $laun; ?></span></td>
 					</tr>
 				</tbody>
 			</table>
@@ -315,7 +309,7 @@ tr:hover .cut { opacity: 1; }
 			<table class="balance">
 				<tr>
 					<th><span >Total</span></th>
-					<td><span data-prefix>$</span><span><?php echo $fintot; ?></span></td>
+					<td><span data-prefix>$</span><span><?php echo $total; ?></span></td>
 				</tr>
 				<tr>
 					<th><span >Amount Paid</span></th>
@@ -323,14 +317,14 @@ tr:hover .cut { opacity: 1; }
 				</tr>
 				<tr>
 					<th><span >Balance Due</span></th>
-					<td><span data-prefix>$</span><span><?php echo $fintot; ?></span></td>
+					<td><span data-prefix>$</span><span><?php echo $total; ?></span></td>
 				</tr>
 			</table>
 		</article>
 		<aside>
 			<h1><span >Contact us</span></h1>
 			<div >
-				<p align="center">Email :- info@sunrise.com || Web :- www.sunrise.com || Phone :- +94 65 222 44 55 </p>
+				<p align="center">Email :- hosteldekho24x7@gmail.com || Web :- www.hosteldekho.com || Phone :- +91-9084730909 </p>
 			</div>
 		</aside>
 	</body>
@@ -339,7 +333,7 @@ tr:hover .cut { opacity: 1; }
 $free="Free";
 $nul = null;
 $rpsql = "UPDATE `room` SET `place`='$free',`cusid`='$nul' where `cusid`='$id'";
-if(mysqli_query($con,$rpsql))
+if(mysqli_query($conn,$rpsql))
 {
 	$delsql= "DELETE FROM `roombook` WHERE id='$id' ";
 	

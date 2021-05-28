@@ -65,18 +65,14 @@ if(!isset($_SESSION["user"]))
                     <li>
                         <a href="home.php"><i class="fa fa-dashboard"></i> Status</a>
                     </li>
-                    <li>
-                        <a  href="messages.php"><i class="fa fa-desktop"></i> News Letters</a>
-                    </li>
+                   
 					<li>
                         <a href="roombook.php"><i class="fa fa-bar-chart-o"></i>Room Booking</a>
                     </li>
                     <li>
                         <a class="active-menu" href="payment.php"><i class="fa fa-qrcode"></i> Payment</a>
                     </li>
-                    <li>
-                        <a  href="profit.php"><i class="fa fa-qrcode"></i> Profit</a>
-                    </li>
+                    
                     <li>
                         <a href="logout.php" ><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                     </li>
@@ -109,16 +105,18 @@ if(!isset($_SESSION["user"]))
                                     <thead>
                                         <tr>
                                             <th>Name</th>
+                                            <th>Hostel</th>
 											<th>Room type</th>
-                                            <th>Bed Type</th>
+											<th>Room Number</th>
+                                            
                                             <th>Check in</th>
 											<th>Check out</th>
-											<th>No of Room</th>
-											<th>Meal Type</th>
+											<th>No of Days</th>
 											
                                             <th>Room Rent</th>
-											<th>Bed Rent</th>
-											<th>Meals </th>
+											<th>Meal Charge</th>
+											<th>Wifi Charge </th>
+											<th>Laundry Charge </th>
 											<th>Gr.Total</th>
 											<th>Print</th>
                                             
@@ -129,45 +127,46 @@ if(!isset($_SESSION["user"]))
 									<?php
 										include ('db.php');
 										$sql="select * from payment";
-										$re = mysqli_query($con,$sql);
+										$re = mysqli_query($conn,$sql);
 										while($row = mysqli_fetch_array($re))
 										{
 										
-											$id = $row['id'];
+											$id = $row['sno'];
 											
 											if($id % 2 ==1 )
 											{
 												echo"<tr class='gradeC'>
-													<td>".$row['title']." ".$row['fname']." ".$row['lname']."</td>
+													<td>".$row['name']."</td>
+													<td>".$row['hostel']."</td>
 													<td>".$row['troom']."</td>
-													<td>".$row['tbed']."</td>
+													<td>".$row['room_no']."</td>
 													<td>".$row['cin']."</td>
 													<td>".$row['cout']."</td>
-													<td>".$row['nroom']."</td>
-													<td>".$row['meal']."</td>
+													<td>".$row['noofdays']."</td>
+													<td>".$row['roomcharge']."</td>
 													
-													<td>".$row['ttot']."</td>
-													<td>".$row['mepr']."</td>
-													<td>".$row['btot']."</td>
-													<td>".$row['fintot']."</td>
+													<td>".$row['mealcharge']."</td>
+													<td>".$row['wificharge']."</td>
+													<td>".$row['launcharge']."</td>
+													<td>".$row['total']."</td>
 													<td><a href=print.php?pid=".$id ." <button class='btn btn-primary'> <i class='fa fa-print' ></i> Print</button></td>
 													</tr>";
 											}
 											else
 											{
-												echo"<tr class='gradeU'>
-													<td>".$row['title']." ".$row['fname']." ".$row['lname']."</td>
+												echo "<td>".$row['name']."</td>
+													<td>".$row['hostel']."</td>
 													<td>".$row['troom']."</td>
-													<td>".$row['tbed']."</td>
+													<td>".$row['room_no']."</td>
 													<td>".$row['cin']."</td>
 													<td>".$row['cout']."</td>
-													<td>".$row['nroom']."</td>
-													<td>".$row['meal']."</td>
+													<td>".$row['noofdays']."</td>
+													<td>".$row['roomcharge']."</td>
 													
-													<td>".$row['ttot']."</td>
-													<td>".$row['mepr']."</td>
-													<td>".$row['btot']."</td>
-													<td>".$row['fintot']."</td>
+													<td>".$row['mealcharge']."</td>
+													<td>".$row['wificharge']."</td>
+													<td>".$row['launcharge']."</td>
+													<td>".$row['total']."</td>
 													<td><a href=print.php?pid=".$id ." <button class='btn btn-primary'> <i class='fa fa-print' ></i> Print</button></td>
 													</tr>";
 											

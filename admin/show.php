@@ -167,70 +167,71 @@ tr:hover .cut { opacity: 1; }
 	
 	
 	
-	$sql ="select * from roombook where id = '$pid' ";
-	$re = mysqli_query($con,$sql);
+	$sql ="select * from booking where sno = '$pid' ";
+	$re = mysqli_query($conn,$sql);
 	while($row=mysqli_fetch_array($re))
 	{
-		$id = $row['id'];
-		$title =  $row['Title'];
-		$Fname = $row['FName'];
-		$lname = $row['LName'];
-		$email = $row['Email'];
-		$National = $row['National'];
-		$country = $row['Country'];
-		$phone = $row['Phone'];
-		$room_type = $row['TRoom'];
-		$Bed_type = $row['Bed'];
-		//$Noof_room = $row['Nroom'];
-		$meal_type = $row['Meal'];
-		$cin_date = $row['cin'];
-		$cout_date = $row['cout'];
-		$nodays = $row['nodays'];
+		$sno = $row['sno'];
+		$name = $row['name'];
+		$phone = $row['phone'];
+		$email = $row['email'];
+		$course = $row['course'];
+		$hometown = $row['hometown'];
+		$aphone = $row['alt_phone'];
+		$troom = $row['type_room'];
+		$meal = $row['meal'];
+		$wifi = $row['wifi'];
+		$laun = $row['laundry'];
+		$cin = $row['check_in'];
+		$cout = $row['check_out'];
+		$sta = $row['stat'];
+		$hostel = $row['hostel'];
+		$days = $row['nodays'];
 	
 	}
 	
 									
 	?>
 		<header>
-			<h1>Information of Guest</h1>
+			<h1>Information of Student</h1>
 			<address >
-				<p>SUN RISE HOTEL,</p>
-				<p>New Kalmunani Road,<br>Battialoa,<br>Sri Lanka.</p>
-				<p>(+94) 65 222 44 55</p>
+				<p>HostelDekho.com</p>
+				<p>GLA University, <br>Mathura<br>India</p>
+				<p>+91-9084908490</p>
 			</address>
-			<span><img alt="" src="assets/img/sun.png"></span>
+			<span><img alt="" src="assets/img/logo.png"></span>
 		</header>
 		<article>
 			<h1></h1>
 			<address >
 				
 				<p><br></p>
-				<p>Coustomer Name  : -  <?php echo $title.$Fname." ".$lname;?><br></p>
+				<p>Student Name  : -  <?php echo $name;?><br></p>
 			</address>
 			<table class="meta">
 				<tr>
 					<th><span >Customer ID</span></th>
-					<td><span ><?php echo $id; ?></span></td>
+					<td><span ><?php echo $sno; ?></span></td>
 				</tr>
 				<tr>
 					<th><span >Check in Date</span></th>
-					<td><span ><?php echo $cin_date; ?> </span></td>
+					<td><span ><?php echo $cin; ?> </span></td>
 				</tr>
 				<tr>
 					<th><span >Check out Date</span></th>
-					<td><span ><?php echo $cout_date; ?> </span></td>
+					<td><span ><?php echo $cout; ?> </span></td>
 				</tr>
 				
 			</table>
 			<table >
 					<tr> 
-						<td>Customer phone : -  <?php echo $phone; ?> </td>
+						<td>Student phone : -  <?php echo $phone; ?> </td>
 						
-						<td>Customer email : -  <?php echo $email; ?> </td>
+						<td>Student email : -  <?php echo $email; ?> </td>
 					</tr>
 					<tr> 
-						<td>Customer Country : -  <?php echo $country; ?> </td>
-						<td>Customer National : -  <?php echo $National; ?> </td>
+						<td>Student Hometown : -  <?php echo $hometown; ?> </td>
+						<td>Student Course : -  <?php echo $course; ?> </td>
 					</tr>
 				</table>
 				<br>
@@ -246,18 +247,18 @@ tr:hover .cut { opacity: 1; }
 				<tbody>
 				
 					<tr>
-						<td><span ><?php echo $room_type; ?></span></td>
-						<td><span ><?php echo $nodays; ?> </span></td>
+						<td><span ><?php echo $troom; ?></span></td>
+						<td><span ><?php echo $days; ?> </span></td>
 						
 					</tr>
 					<tr>
-						<td><span ><?php echo $Bed_type; ?>  Bed </span></td>
-						<td><span ><?php echo $nodays; ?></span></td>
+						<td><span ><?php echo $hostel; ?>  Hostel </span></td>
+						<td><span ><?php echo $days; ?></span></td>
 						
 					</tr>
 					<tr>
-						<td><span ><?php echo $meal_type; ?>  </span></td>
-						<td><span ><?php echo $nodays; ?></span></td>
+						<td><span ><?php echo $meal; ?>  </span></td>
+						<td><span ><?php echo $days; ?></span></td>
 						
 					</tr>
 				</tbody>
@@ -268,7 +269,7 @@ tr:hover .cut { opacity: 1; }
 		<aside>
 			<h1><span >Contact us</span></h1>
 			<div >
-				<p align="center">Email :- info@sunrise.com || Web :- www.sunrise.com || Phone :- +94 65 222 44 55 </p>
+				<p align="center">Email :- hosteldekho24x7@gmail.com || Web :- www.hosteldekho.com || Phone :- +91-9084908490 </p>
 			</div>
 		</aside>
 	</body>

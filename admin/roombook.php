@@ -6,6 +6,7 @@ if (!isset($_SESSION["user"])) {
 ?>
 
 <?php
+
 if (!isset($_GET["rid"])) {
 
 	header("location:index.php");
@@ -13,7 +14,6 @@ if (!isset($_GET["rid"])) {
 	$curdate = date("Y/m/d");
 	include('db.php');
 	$id = $_GET['rid'];
-
 
 	$sql = "Select * from booking where sno = '$id'";
 	$re = mysqli_query($conn, $sql);
@@ -34,12 +34,11 @@ if (!isset($_GET["rid"])) {
 		$sta = $row['stat'];
 		$hostel = $row['hostel'];
 		$days = $row['nodays'];
-	}
-
-	$ratesql = "SELECT `price` FROM `room` WHERE hostel_name = 'A'";
-	$rate = mysqli_query($conn, $ratesql);
-	while ($row = mysqli_fetch_array($rate)) {
-		$price = $row['price'];
+		$ratesql = "SELECT `price` FROM `room` WHERE hostel_name = '$hostel'";
+		$rate = mysqli_query($conn, $ratesql);
+		while ($row = mysqli_fetch_array($rate)) {
+			$price = $row['price'];
+		}
 	}
 }
 
@@ -106,55 +105,35 @@ if (!isset($_GET["rid"])) {
 					<li>
 						<a href="home.php"><i class="fa fa-dashboard"></i> Status</a>
 					</li>
-					<li>
-						<a href="messages.php"><i class="fa fa-desktop"></i> News Letters</a>
-					</li>
+
 					<li>
 						<a class="active-menu" href="roombook.php"><i class="fa fa-bar-chart-o"></i> Room Booking</a>
 					</li>
 					<li>
 						<a href="payment.php"><i class="fa fa-qrcode"></i> Payment</a>
 					</li>
-					<li>
-						<a href="profit.php"><i class="fa fa-qrcode"></i> Profit</a>
-					</li>
 
 					<li>
 						<a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
 					</li>
-
-
-
-
 				</ul>
-
 			</div>
-
 		</nav>
 		<!-- /. NAV SIDE  -->
-
-
-
-
 		<div id="page-wrapper">
 			<div id="page-inner">
-
-
 				<div class="row">
 					<div class="col-md-12">
 						<h1 class="page-header">
 							Room Booking<small> <?php echo  $curdate; ?> </small>
 						</h1>
 					</div>
-
-
 					<div class="col-md-8 col-sm-8">
 						<div class="panel panel-info">
 							<div class="panel-heading">
 								Booking Confirmation
 							</div>
 							<div class="panel-body">
-
 								<div class="table-responsive">
 									<table class="table">
 										<tr>
@@ -175,83 +154,65 @@ if (!isset($_GET["rid"])) {
 										<tr>
 											<th>Phone No.</th>
 											<th><?php echo $phone; ?></th>
-
 										</tr>
 										<tr>
 											<th>Email </th>
 											<th><?php echo $email;  ?></th>
-
 										</tr>
 										<tr>
 											<th>Alternate Phone No </th>
 											<th><?php echo $aphone; ?></th>
-
 										</tr>
 										<tr>
 											<th>Course </th>
 											<th><?php echo $course; ?></th>
-
 										</tr>
 										<tr>
 											<th>Hometown</th>
 											<th><?php echo $hometown; ?></th>
-
 										</tr>
 										<tr>
 											<th>hostel</th>
 											<th><?php echo $hostel; ?></th>
-
 										</tr>
 										<tr>
 											<th>Room Type</th>
 											<th><?php echo $troom; ?></th>
-
 										</tr>
 										<tr>
 											<th>Meal Plan </th>
 											<th><?php echo $meal; ?></th>
-
 										</tr>
 										<tr>
 											<th>Wi-Fi </th>
 											<th><?php echo $wifi; ?></th>
-
 										</tr>
 										<tr>
 											<th>Laundry </th>
 											<th><?php echo $laun; ?></th>
-
 										</tr>
 										<tr>
 											<th>Check-in Date </th>
 											<th><?php echo $cin; ?></th>
-
 										</tr>
 										<tr>
 											<th>Check-out Date</th>
 											<th><?php echo $cout; ?></th>
-
 										</tr>
 										<tr>
 											<th>No of days</th>
 											<th><?php echo $days; ?></th>
-
+										</tr>
+										<tr>
+											<th>Price</th>
+											<th><?php echo $price; ?></th>
 										</tr>
 										<tr>
 											<th>Status Level</th>
 											<th><?php echo $sta; ?></th>
-
 										</tr>
-
-
-
-
-
 									</table>
 								</div>
-
-
-
 							</div>
 							<div class="panel-footer">
 								<form method="post">
@@ -261,17 +222,14 @@ if (!isset($_GET["rid"])) {
 											<option value selected> </option>
 											<option value="Confirmed">Confirm</option>
 											<option value="Not-Confirmed">Not-Confirm</option>
-
-
 										</select>
 									</div>
-									<input type="submit" name="co" value="Confirm" class="btn btn-success">
+									<input type="submit" name="co" value="Submit" class="btn btn-success">
 
 								</form>
 							</div>
 						</div>
 					</div>
-
 					<?php
 					$rsql = "select * from room where hostel_name='$hostel'";
 					$rre = mysqli_query($conn, $rsql);
@@ -301,7 +259,8 @@ if (!isset($_GET["rid"])) {
 					?>
 
 					<?php
-					$csql = "select * from payment";
+					/*
+					$csql = "select * from payment where hostel = '$hostel'";
 					$cre = mysqli_query($conn, $csql);
 					$cr = 0;
 					$csc = 0;
@@ -326,7 +285,7 @@ if (!isset($_GET["rid"])) {
 							$cdr = $cdr + 1;
 						}
 					}
-
+					*/
 					?>
 					<div class="col-md-4 col-sm-4">
 						<div class="panel panel-default">
@@ -339,7 +298,7 @@ if (!isset($_GET["rid"])) {
 									<tr>
 										<td><b>Single AC Room</b></td>
 										<td><button type="button" class="btn btn-primary btn-circle"><?php
-																										$f1 = $sac - $csc;
+																										$f1 = $sac/* - $csc*/;
 																										if ($f1 <= 0) {
 																											$f1 = "NO";
 																											echo $f1;
@@ -353,7 +312,7 @@ if (!isset($_GET["rid"])) {
 									<tr>
 										<td><b>Single Non-AC Room</b> </td>
 										<td><button type="button" class="btn btn-primary btn-circle"><?php
-																										$f2 =  $snac - $cgh;
+																										$f2 =  $snac/* - $cgh*/;
 																										if ($f2 <= 0) {
 																											$f2 = "NO";
 																											echo $f2;
@@ -366,7 +325,7 @@ if (!isset($_GET["rid"])) {
 									<tr>
 										<td><b>Double AC Room </b></td>
 										<td><button type="button" class="btn btn-primary btn-circle"><?php
-																										$f3 = $dac - $csr;
+																										$f3 = $dac/* - $csr*/;
 																										if ($f3 <= 0) {
 																											$f3 = "NO";
 																											echo $f3;
@@ -380,7 +339,7 @@ if (!isset($_GET["rid"])) {
 										<td><b>Double Non-AC Room</b> </td>
 										<td><button type="button" class="btn btn-primary btn-circle"><?php
 
-																										$f4 = $dnac - $cdr;
+																										$f4 = $dnac/* - $cdr*/;
 																										if ($f4 <= 0) {
 																											$f4 = "NO";
 																											echo $f4;
@@ -393,7 +352,7 @@ if (!isset($_GET["rid"])) {
 										<td><b>Total Rooms </b> </td>
 										<td> <button type="button" class="btn btn-danger btn-circle"><?php
 
-																										$f5 = $r - $cr;
+																										$f5 = $r/* - $cr*/;
 																										if ($f5 <= 0) {
 																											$f5 = "NO";
 																											echo $f5;
@@ -449,9 +408,13 @@ if (!isset($_GET["rid"])) {
 
 <?php
 if (isset($_POST['co'])) {
+
+
+
 	$st = $_POST['conf'];
 	if ($st == "Confirmed") {
-		$urb = "UPDATE `room` SET `status`='$st' WHERE sno = '$id'";
+
+		$urb = "UPDATE `booking` SET `stat`='$st'  WHERE `sno` = '$id'";
 
 		if ($f1 == "NO") {
 			echo "<script type='text/javascript'> alert('Sorry! Not Available Single AC Room ')</script>";
@@ -462,16 +425,24 @@ if (isset($_POST['co'])) {
 		} else if ($f4 == "NO") {
 			echo "<script type='text/javascript'> alert('Sorry! Not Available Double Non-AC Room')</script>";
 		} else if (mysqli_query($conn, $urb)) {
+			echo "<script type='text/javascript'> alert('Running')</script>";
 			//echo "<script type='text/javascript'> alert('Guest Room booking is conform')</script>";
 			//echo "<script type='text/javascript'> window.location='home.php'</script>";
 
-			if ($troom == "Single AC Room") {
+			$rsno = "select room_no from room where status='Unoccupied' and hostel_name='$hostel' and type='$troom' LIMIT 1";
+			$ro = mysqli_query($conn, $rsno);
+			$row = mysqli_fetch_array($ro);
+			$room_no = $row['room_no'];
+
+
+
+			if ($troom == "SINGLE AC ROOM") {
 				$type_of_room = 30;
-			} else if ($troom == "Single Non-AC Room") {
+			} else if ($troom == "SINGLE NON-AC ROOM") {
 				$type_of_room = 18;
-			} else if ($troom == "Double AC Room") {
+			} else if ($troom == "DOUBLE AC ROOM") {
 				$type_of_room = 20;
-			} else if ($troom == "Double Non-AC Room") {
+			} else if ($troom == "DOUBLE NON-AC ROOM") {
 				$type_of_room = 10;
 			} else {
 				$type_of_room = 0;
@@ -502,7 +473,6 @@ if (isset($_POST['co'])) {
 				$laun_charge = 10;
 			}
 
-			$price = ((int)$rate) / 30;
 			$ttot = $type_of_room * $days;
 			$mepr = $type_of_meal * $days;
 			$wich = $wificharge * $days;
@@ -511,11 +481,12 @@ if (isset($_POST['co'])) {
 			$fintot = $price + $ttot + $mepr + $wich + $lach;
 
 			//echo "<script type='text/javascript'> alert('$count_date')</script>";
-			$psql = "INSERT INTO `payment` (`name`, `hostel`, `troom`, `cin`, `cout`, `noofdays`, `roomcharge`, `mealcharge`, `wificharge`, `launcharge`, `total`) VALUES ('$name', '$hostel', '$troom', '$cin', '$cout', '$days', '$ttot', '$mepr', '$wich', '$lach', '$fintot')";
-
+			$psql = "INSERT INTO `payment` (`name`, `hostel`, `troom`, `room_no`, `cin`, `cout`, `noofdays`, `roomcharge`, `mealcharge`, `wificharge`, `launcharge`, `total`) VALUES ('$name', '$hostel', '$troom','$room_no', '$cin', '$cout', '$days', '$ttot', '$mepr', '$wich', '$lach', '$fintot')";
+			$urb = "UPDATE `booking` SET `room_no`='$room_no'  WHERE sno = '$id'";
+			mysqli_query($conn, $urb);
 			if (mysqli_query($conn, $psql)) {
 				$sta = "Occupied";
-				$rpsql = "update room set status='$sta' where sno=(select sno from room where status='Unoccupied' and hostel_name='$hostel' LIMIT 1);";
+				$rpsql = "update room set status='$sta' where room_no= '$room_no';";
 				if (mysqli_query($conn, $rpsql)) {
 					echo "<script type='text/javascript'> alert('Booking Conform')</script>";
 					echo "<script type='text/javascript'> window.location='roombook.php'</script>";
@@ -524,8 +495,4 @@ if (isset($_POST['co'])) {
 		}
 	}
 }
-
-
-
-
 ?>
