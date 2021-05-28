@@ -23,7 +23,6 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 $db = "hosteldekho";
-$hostel=$_POST['hostel'];
 
 
 session_start();
@@ -77,7 +76,6 @@ if (isset($_POST['otp'])) {
     $_SESSION['name'] = $name;
     $_SESSION['phone'] = $phone;
     $_SESSION['email'] = $email;
-    $_SESSION['hostel'] = $hostel;
   } else {
     echo mysqli_error($conn);
   }

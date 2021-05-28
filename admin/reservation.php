@@ -84,9 +84,13 @@ session_start();
                                     </div>
                                     <div class="form-group">
                                         <label>Hostel</label>
-                                        <input name="hostel" class="form-control" readonly placeholder="<?php
-                                                                                                        echo $_SESSION['hostel'];
-                                                                                                        ?>">
+                                        <select name="hostel" class="form-control" required>
+                                            <option value selected></option>
+                                            <option value="A">A Starting from &#8377 4000</option>
+                                            <option value="B">B Starting from &#8377 3500</option>
+                                            <option value="C">C Starting from &#8377 3000</option>
+                                            <option value="D">D Starting from &#8377 2800</option>
+                                        </select>
 
                                     </div>
                                     <div class="form-group">
@@ -196,7 +200,7 @@ session_start();
                                         $msg = "Invalide code";
                                     } else {
                                         $new = "Under Waiting";
-                                        $newUser = "INSERT INTO `booking`(`name`, `phone`, `email`, `course`, `hometown`, `alt_phone`, `type_room`, `meal`, `wifi`, `laundry`, `check_in`, `check_out`,`stat`,`nodays`,`hostel`) VALUES ('$_SESSION[name]','$_SESSION[phone]','$_SESSION[email]','$_POST[course]','$_POST[hometown]','$_POST[aphone]','$_POST[troom]','$_POST[meal]','$_POST[wifi]','$_POST[laundry]','$_POST[cin]','$_POST[cout]','$new',datediff('$_POST[cout]','$_POST[cin]'),'$_SESSION[hostel]')";
+                                        $newUser = "INSERT INTO `booking`(`name`, `phone`, `email`, `course`, `hometown`, `alt_phone`, `type_room`, `meal`, `wifi`, `laundry`, `check_in`, `check_out`,`stat`,`nodays`,`hostel`) VALUES ('$_SESSION[name]','$_SESSION[phone]','$_SESSION[email]','$_POST[course]','$_POST[hometown]','$_POST[aphone]','$_POST[troom]','$_POST[meal]','$_POST[wifi]','$_POST[laundry]','$_POST[cin]','$_POST[cout]','$new',datediff('$_POST[cout]','$_POST[cin]'),'$_POST[hostel]')";
                                         if (mysqli_query($conn, $newUser)) {
                                             echo "<script type='text/javascript'> alert('Your Booking application has been sent')</script>";
                                         } else {
