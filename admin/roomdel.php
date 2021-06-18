@@ -9,8 +9,8 @@ ob_start();
 
 <?php
 include('db.php');
-$rsql ="select id from room";
-$rre=mysqli_query($con,$rsql);
+$rsql ="select room_no from room";
+$rre=mysqli_query($conn,$rsql);
 
 ?>
 							 
@@ -19,7 +19,7 @@ $rre=mysqli_query($con,$rsql);
 <head>
       <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SUNRISE HOTEL</title>
+    <title>Room | Hosteldekho.com</title>
 	<!-- Bootstrap Styles-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
      <!-- FontAwesome Styles-->
@@ -108,13 +108,13 @@ $rre=mysqli_query($con,$rsql);
                         <div class="panel-body">
 						<form name="form" method="post">
                             <div class="form-group">
-                                            <label>Select the Room ID *</label>
+                                            <label>Select the Room No *</label>
                                             <select name="id"  class="form-control" required>
 												<option value selected ></option>
 												<?php
 												while($rrow=mysqli_fetch_array($rre))
 												{
-												$value = $rrow['id'];
+												$value = $rrow['room_no'];
 												 echo '<option value="'.$value.'">'.$value.'</option>';
 												
 												}
@@ -134,8 +134,8 @@ $rre=mysqli_query($con,$rsql);
 								$did = $_POST['id'];
 								
 								
-								$sql ="DELETE FROM `room` WHERE id = '$did'" ;
-								if(mysqli_query($con,$sql))
+								$sql ="DELETE FROM `room` WHERE room_no = '$did'" ;
+								if(mysqli_query($conn,$sql))
 								{
 								 echo '<script type="text/javascript">alert("Delete the Room") </script>' ;
 										
@@ -155,7 +155,7 @@ $rre=mysqli_query($con,$rsql);
            <?php
 						include ('db.php');
 						$sql = "select * from room";
-						$re = mysqli_query($con,$sql)
+						$re = mysqli_query($conn,$sql)
 				?>
                 <div class="row">
 				
@@ -164,13 +164,13 @@ $rre=mysqli_query($con,$rsql);
 										while($row= mysqli_fetch_array($re))
 										{
 												$id = $row['type'];
-											if($id == "Superior Room") 
+											if($id == "SINGLE AC ROOM") 
 											{
 												echo"<div class='col-md-3 col-sm-12 col-xs-12'>
 													<div class='panel panel-primary text-center no-boder bg-color-blue'>
 														<div class='panel-body'>
 															<i class='fa fa-users fa-5x'></i>
-															<h3>".$row['bedding']."</h3>
+															<h3>".$row['room_no']."</h3>
 														</div>
 														<div class='panel-footer back-footer-blue'>
 															".$row['type']."
@@ -179,13 +179,13 @@ $rre=mysqli_query($con,$rsql);
 													</div>
 												</div>";
 											}
-											else if ($id == "Deluxe Room")
+											else if ($id == "SINGLE NON-AC ROOM")
 											{
 												echo"<div class='col-md-3 col-sm-12 col-xs-12'>
 													<div class='panel panel-primary text-center no-boder bg-color-green'>
 														<div class='panel-body'>
 															<i class='fa fa-users fa-5x'></i>
-															<h3>".$row['bedding']."</h3>
+															<h3>".$row['room_no']."</h3>
 														</div>
 														<div class='panel-footer back-footer-green'>
 															".$row['type']."
@@ -195,13 +195,13 @@ $rre=mysqli_query($con,$rsql);
 												</div>";
 											
 											}
-											else if($id =="Guest House")
+											else if($id =="DOUBLE AC ROOM")
 											{
 												echo"<div class='col-md-3 col-sm-12 col-xs-12'>
 													<div class='panel panel-primary text-center no-boder bg-color-brown'>
 														<div class='panel-body'>
 															<i class='fa fa-users fa-5x'></i>
-															<h3>".$row['bedding']."</h3>
+															<h3>".$row['room_no']."</h3>
 														</div>
 														<div class='panel-footer back-footer-brown'>
 															".$row['type']."
@@ -211,13 +211,13 @@ $rre=mysqli_query($con,$rsql);
 												</div>";
 											
 											}
-											else if($id =="Single Room")
+											else if($id =="DOUBLE NON-AC ROOM")
 											{
 												echo"<div class='col-md-3 col-sm-12 col-xs-12'>
 													<div class='panel panel-primary text-center no-boder bg-color-red'>
 														<div class='panel-body'>
 															<i class='fa fa-users fa-5x'></i>
-															<h3>".$row['bedding']."</h3>
+															<h3>".$row['room_no']."</h3>
 														</div>
 														<div class='panel-footer back-footer-red'>
 															".$row['type']."

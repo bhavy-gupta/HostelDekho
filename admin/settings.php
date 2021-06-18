@@ -10,7 +10,7 @@ if(!isset($_SESSION["user"]))
 <head>
       <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SUNRISE HOTEL</title>
+    <title>Settings | HostelDEkho.com</title>
 	<!-- Bootstrap Styles-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
      <!-- FontAwesome Styles-->
@@ -90,7 +90,7 @@ if(!isset($_SESSION["user"]))
             <?php
 						include ('db.php');
 						$sql = "select * from room";
-						$re = mysqli_query($con,$sql)
+						$re = mysqli_query($conn,$sql)
 				?>
                 <div class="row">
 				
@@ -99,13 +99,13 @@ if(!isset($_SESSION["user"]))
 										while($row= mysqli_fetch_array($re))
 										{
 												$id = $row['type'];
-											if($id == "Superior Room") 
+											if($id == "SINGLE AC ROOM") 
 											{
 												echo"<div class='col-md-3 col-sm-12 col-xs-12'>
 													<div class='panel panel-primary text-center no-boder bg-color-blue'>
 														<div class='panel-body'>
 															<i class='fa fa-users fa-5x'></i>
-															<h3>".$row['bedding']."</h3>
+															<h3>".$row['room_no']."</h3>
 														</div>
 														<div class='panel-footer back-footer-blue'>
 															".$row['type']."
@@ -114,13 +114,13 @@ if(!isset($_SESSION["user"]))
 													</div>
 												</div>";
 											}
-											else if ($id == "Deluxe Room")
+											else if ($id == "DOUBLE AC ROOM")
 											{
 												echo"<div class='col-md-3 col-sm-12 col-xs-12'>
 													<div class='panel panel-primary text-center no-boder bg-color-green'>
 														<div class='panel-body'>
 															<i class='fa fa-users fa-5x'></i>
-															<h3>".$row['bedding']."</h3>
+															<h3>".$row['room_no']."</h3>
 														</div>
 														<div class='panel-footer back-footer-green'>
 															".$row['type']."
@@ -130,13 +130,13 @@ if(!isset($_SESSION["user"]))
 												</div>";
 											
 											}
-											else if($id =="Guest House")
+											else if($id =="SINGLE NON-AC ROOM")
 											{
 												echo"<div class='col-md-3 col-sm-12 col-xs-12'>
 													<div class='panel panel-primary text-center no-boder bg-color-brown'>
 														<div class='panel-body'>
 															<i class='fa fa-users fa-5x'></i>
-															<h3>".$row['bedding']."</h3>
+															<h3>".$row['room_no']."</h3>
 														</div>
 														<div class='panel-footer back-footer-brown'>
 															".$row['type']."
@@ -146,13 +146,13 @@ if(!isset($_SESSION["user"]))
 												</div>";
 											
 											}
-											else if($id =="Single Room")
+											else if($id =="DOUBLE NON-AC ROOM")
 											{
 												echo"<div class='col-md-3 col-sm-12 col-xs-12'>
 													<div class='panel panel-primary text-center no-boder bg-color-red'>
 														<div class='panel-body'>
 															<i class='fa fa-users fa-5x'></i>
-															<h3>".$row['bedding']."</h3>
+															<h3>".$row['room_no']."</h3>
 														</div>
 														<div class='panel-footer back-footer-red'>
 															".$row['type']."

@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Details of Book key</title>
+		<title>Details of Booking</title>
 		
 		<style>
 		/* reset */

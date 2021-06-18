@@ -12,7 +12,7 @@ ob_start();
 <head>
       <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SUNRISE HOTEL</title>
+    <title>Admin | HostelDekho.com</title>
 	<!-- Bootstrap Styles-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
      <!-- FontAwesome Styles-->
@@ -87,8 +87,8 @@ ob_start();
                                  
             <?php
 						include ('db.php');
-						$sql = "SELECT * FROM `login`";
-						$re = mysqli_query($con,$sql)
+						$sql = "SELECT * FROM `adlogin`";
+						$re = mysqli_query($conn,$sql)
 				?>
                 
             <div class="row">
@@ -199,8 +199,8 @@ ob_start();
 							$newus = $_POST['newus'];
 							$newps = $_POST['newps'];
 							
-							$newsql ="Insert into login (usname,pass) values ('$newus','$newps')";
-							if(mysqli_query($con,$newsql))
+							$newsql ="Insert into adlogin (usname,pass) values ('$newus','$newps')";
+							if(mysqli_query($conn,$newsql))
 							{
 							echo' <script language="javascript" type="text/javascript"> alert("User name and password Added") </script>';
 							
@@ -254,8 +254,8 @@ ob_start();
 					$usname = $_POST['usname'];
 					$passwr = $_POST['pasd'];
 					
-					$upsql = "UPDATE `login` SET `usname`='$usname',`pass`='$passwr' WHERE id = '$id'";
-					if(mysqli_query($con,$upsql))
+					$upsql = "UPDATE `adlogin` SET `usname`='$usname',`pass`='$passwr' WHERE id = '$id'";
+					if(mysqli_query($conn,$upsql))
 					{
 					echo' <script language="javascript" type="text/javascript"> alert("User name and password update") </script>';
 					
