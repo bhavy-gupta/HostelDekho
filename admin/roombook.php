@@ -1,4 +1,5 @@
 <?php
+include('../smtp.php');
 session_start();
 if (!isset($_SESSION["user"])) {
 	header("location:index.php");
@@ -425,7 +426,7 @@ if (isset($_POST['co'])) {
 		} else if ($f4 == "NO") {
 			echo "<script type='text/javascript'> alert('Sorry! Not Available Double Non-AC Room')</script>";
 		} else if (mysqli_query($conn, $urb)) {
-			echo "<script type='text/javascript'> alert('Running')</script>";
+
 			//echo "<script type='text/javascript'> alert('Guest Room booking is conform')</script>";
 			//echo "<script type='text/javascript'> window.location='home.php'</script>";
 
@@ -488,8 +489,21 @@ if (isset($_POST['co'])) {
 				$sta = "Occupied";
 				$rpsql = "update room set status='$sta' where room_no= '$room_no';";
 				if (mysqli_query($conn, $rpsql)) {
-					echo "<script type='text/javascript'> alert('Booking Conform')</script>";
+					echo "<script type='text/javascript'> alert('Booking Confirmed..')</script>";
 					echo "<script type='text/javascript'> window.location='roombook.php'</script>";
+					$mail->IsHTML(true);
+					$mail->AddAddress("$email", "$name");
+					$mail->SetFrom("hosteldekho24x7@gmail.com", "HostelDekho");
+					$mail->Subject = "Alloted Room Number for Booking";
+					$content = "<b>Booking Successful.. your Room Number is $room_no</b>";
+
+					$mail->MsgHTML($content);
+					if (!$mail->Send()) {
+						echo "Error while sending Email.";
+						var_dump($mail);
+					} else {
+						echo "Email sent successfully";
+					}
 				}
 			}
 		}
