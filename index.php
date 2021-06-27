@@ -702,11 +702,9 @@ session_start();
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     Worth to come again
                                 </h4>
-                                <p>Sed tempus vestibulum lacus blandit faucibus.
-                                    Nunc imperdiet, diam nec rhoncus ullamcorper, nisl nulla suscipit ligula,
-                                    at imperdiet urna. </p>
-                                <h5>Julia Rose</h5>
-                                <p>Germany</p>
+                                <p>Rooms are mostly same but service depends accordingly as per price. The best part no compromise with the food quality.    </p>
+                                <h5>Kunal Varshney </h5>
+                                <p>Aligarh</p>
                             </div>
                             <div class="clearfix"> </div>
                         </li>
@@ -726,11 +724,9 @@ session_start();
                                     <i class="fa fa-star-o" aria-hidden="true"></i>
                                     Worth to come again
                                 </h4>
-                                <p>Sed tempus vestibulum lacus blandit faucibus.
-                                    Nunc imperdiet, diam nec rhoncus ullamcorper, nisl nulla suscipit ligula,
-                                    at imperdiet urna. </p>
-                                <h5>Jahnatan Smith</h5>
-                                <p>United States</p>
+                                <p>Comfortable bed rooms, CCTV security, contains full Privacy, neet and clean washrooms and fantastic laundry system.           </p>
+                                <h5>Divyanshu singh </h5>
+                                <p>Hathras</p>
                             </div>
                             <div class="clearfix"> </div>
                         </li>
@@ -750,11 +746,9 @@ session_start();
                                     <i class="fa fa-star-o" aria-hidden="true"></i>
                                     Worth to come again
                                 </h4>
-                                <p>Sed tempus vestibulum lacus blandit faucibus.
-                                    Nunc imperdiet, diam nec rhoncus ullamcorper, nisl nulla suscipit ligula,
-                                    at imperdiet urna. </p>
-                                <h5>Rosalind Cloer</h5>
-                                <p>Italy</p>
+                                <p>Friendly and peaceful environment which refresh mind for fun as well as studies, and I am foodie and we can choose the menu for a month I loved it.</p>
+                                <h5>Yugal Garg</h5>
+                                <p>Meerut</p>
                             </div>
                             <div class="clearfix"> </div>
                         </li>
@@ -774,11 +768,9 @@ session_start();
                                     <i class="fa fa-star-o" aria-hidden="true"></i>
                                     Worth to come again
                                 </h4>
-                                <p>Sed tempus vestibulum lacus blandit faucibus.
-                                    Nunc imperdiet, diam nec rhoncus ullamcorper, nisl nulla suscipit ligula,
-                                    at imperdiet urna. </p>
-                                <h5>Amie Bublitz</h5>
-                                <p>Switzerland</p>
+                                <p>Nice take care for my daughter, they provides well maintained service. As a parent we just need our kid to be secured in right hands that's what we get. </p>
+                                <h5>Amit Sharma </h5>
+                                <p>Patna</p>
                             </div>
                             <div class="clearfix"> </div>
                         </li>
